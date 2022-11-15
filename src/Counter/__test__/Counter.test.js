@@ -14,5 +14,12 @@ test('counter initally start with text of 0', () => {
   const component = render(<Counter />);
   const counterElement = component.getByTestId('counter');
 
-  expect(headerElement.textContent).toBe('0');
+  expect(counterElement.textContent).toBe('0');
+});
+
+test('input contain inital value of 1', () => {
+  const component = render(<Counter />);
+  const inputElement = component.getByTestId('input');
+
+  expect(inputElement.value).toBe('1');
 });
