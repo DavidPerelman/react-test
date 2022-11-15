@@ -9,3 +9,10 @@ test('header renders with correct text', () => {
 
   expect(headerElement.textContent).toBe('My Counter');
 });
+
+test('counter initally start with text of 0', () => {
+  const component = render(<Counter />);
+  const counterElement = component.getByTestId('counter');
+
+  expect(headerElement.textContent).toBe('0');
+});
