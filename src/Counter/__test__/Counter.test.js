@@ -1,6 +1,6 @@
 import React from 'react';
 import Counter from '../Counter';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 test('header renders with correct text', () => {
@@ -28,7 +28,7 @@ test('add button renders with +', () => {
   const component = render(<Counter />);
   const addBtnElement = component.getByTestId('add-btn');
 
-  expect(inputElement.textContent).toBe('+');
+  expect(addBtnElement.textContent).toBe('+');
 });
 
 test('subtract button renders with -', () => {
@@ -36,4 +36,17 @@ test('subtract button renders with -', () => {
   const subtractBtnElement = component.getByTestId('subtract-btn');
 
   expect(subtractBtnElement.textContent).toBe('-');
+});
+
+test('change value of input work correctly', () => {
+  const component = render(<Counter />);
+  const inputElement = component.getByTestId('input');
+
+  fireEvent.change(inputElement, {
+    target: {
+      value: '5',
+    },
+  });
+
+  expect(inputElement.value).toBe('5');
 });
