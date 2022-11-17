@@ -23,3 +23,17 @@ test('input contain inital value of 1', () => {
 
   expect(inputElement.value).toBe('1');
 });
+
+test('add button renders with +', () => {
+  const component = render(<Counter />);
+  const addBtnElement = component.getByTestId('add-btn');
+
+  expect(inputElement.textContent).toBe('+');
+});
+
+test('subtract button renders with -', () => {
+  const component = render(<Counter />);
+  const subtractBtnElement = component.getByTestId('subtract-btn');
+
+  expect(subtractBtnElement.textContent).toBe('-');
+});
