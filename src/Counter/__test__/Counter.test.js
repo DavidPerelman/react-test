@@ -75,7 +75,7 @@ test('click on subtract btn subtract 1 from counter', () => {
   expect(counterElement.textContent).toBe('-1');
 });
 
-test('changing input value the clicking on add btn works correctly', () => {
+test('changing input value then clicking on add btn works correctly', () => {
   const component = render(<Counter />);
   const addBtnElement = component.getByTestId('add-btn');
   const counterElement = component.getByTestId('counter');
@@ -90,4 +90,21 @@ test('changing input value the clicking on add btn works correctly', () => {
   fireEvent.click(addBtnElement);
 
   expect(counterElement.textContent).toBe('5');
+});
+
+test('changing input value then clicking on subtract btn works correctly', () => {
+  const component = render(<Counter />);
+  const subtractBtnElement = component.getByTestId('subtract-btn');
+  const counterElement = component.getByTestId('counter');
+  const inputElement = component.getByTestId('input');
+
+  fireEvent.change(inputElement, {
+    target: {
+      value: '5',
+    },
+  });
+
+  fireEvent.click(subtractBtnElement);
+
+  expect(counterElement.textContent).toBe('-5');
 });
